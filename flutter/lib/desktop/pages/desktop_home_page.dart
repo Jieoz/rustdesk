@@ -919,13 +919,8 @@ void setPasswordDialog({VoidCallback? notEmptyCallback}) async {
   final presetPassword = permanentPasswordSet && !localPasswordSet;
   var canSubmit = false;
   final RxString rxPass = "".obs;
-  final rules = [
-    DigitValidationRule(),
-    UppercaseValidationRule(),
-    LowercaseValidationRule(),
-    // SpecialCharacterValidationRule(),
-    MinCharactersValidationRule(8),
-  ];
+  // Custom build: no password strength restriction, allow any password.
+  final List<ValidationRule> rules = [];
   final maxLength = bind.mainMaxEncryptLen();
   final statusTip = localPasswordSet
       ? translate('password-hidden-tip')
