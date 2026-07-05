@@ -84,8 +84,7 @@ class ConnectStatus: Reactor.Component {
         } else if (connect_status == 0) {
             return translate('connecting_status');
         }
-        if (!handler.using_public_server()) return translate('Ready');
-        return <span>{translate("Ready")}, <span .link #setup-server>{translate("setup_server_tip")}</span></span>;
+        return translate('Ready');
     }
 
     event click $(#start-service) () {
@@ -1157,9 +1156,6 @@ class PasswordArea: Reactor.Component {
             var p1 = (res.confirmation || "").trim();
             if (p0.length == 0 && p1.length == 0) {
                 return " ";
-            }
-            if (p0.length < 6 && p0.length != 0) {
-                return translate("Too short, at least 6 characters.");
             }
             if (p0 != p1) {
                 return translate("The confirmation is not identical.");
